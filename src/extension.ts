@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as open from 'open';
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand('ithy-vscode.promptIthy', async () => {
@@ -12,8 +11,10 @@ export function activate(context: vscode.ExtensionContext) {
     if (query) {
       // Encode the query for URL
       const encodedQuery = encodeURIComponent(query);
-      // Open the default browser with the search query
-      await open(`https://www.google.com/search?q=${encodedQuery}`);
+
+      // Create a URI and open it in the default browser
+      const uri = vscode.Uri.parse(`https://www.google.com/search?q=${encodedQuery}`);
+      await vscode.env.openExternal(uri);
     }
   });
 
