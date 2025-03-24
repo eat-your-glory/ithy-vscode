@@ -1,26 +1,23 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as open from 'open';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand('ithy-vscode.promptIthy', async () => {
+    // Prompt user for search query
+    const query = await vscode.window.showInputBox({
+      placeHolder: 'Enter your Ithy prompt',
+      prompt: 'Prompt Ithy in your default browser'
+    });
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "ithy-vscode" is now active!');
+    if (query) {
+      // Encode the query for URL
+      const encodedQuery = encodeURIComponent(query);
+      // Open the default browser with the search query
+      await open(`https://www.google.com/search?q=${encodedQuery}`);
+    }
+  });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('ithy-vscode.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Ithy for VS Code!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
