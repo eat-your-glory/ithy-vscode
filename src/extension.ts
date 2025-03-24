@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
       const encodedQuery = encodeURIComponent(query);
 
       // Create a URI and open it in the default browser
-      const uri = vscode.Uri.parse(`https://www.google.com/search?q=${encodedQuery}`);
+      const uri = vscode.Uri.parse(`https://ithy.com/?query=${encodedQuery}`);
       await vscode.env.openExternal(uri);
     }
   });
