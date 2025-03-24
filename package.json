@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "ithy-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "ithy-vscode.promptIthy",
+        "title": "Prompt Ithy"
       }
     ]
   },
