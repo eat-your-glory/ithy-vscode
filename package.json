@@ -16,6 +16,10 @@
       {
         "command": "ithy-vscode.promptIthy",
         "title": "Prompt Ithy"
+      },
+      {
+        "command": "ithy-vscode.openBaseIthy",
+        "title": "Open Ithy.com"
       }
     ]
   },
